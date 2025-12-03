@@ -47,6 +47,4 @@ def init_database():
     monstres_table.insert_many(liste_monstres)
 
     print("Base de donnees initialisee!")
-
-
-init_database()
+    
