@@ -1,15 +1,31 @@
 from db_init import *
 from game import *
 
-def demarrer_jeu():
-    """Demarre une nouvelle partie"""
-    print("\nNouvelle partie")
+
+def demander_nom():
+    """Demander nom"""
 
     nom_joueur = input("Entrez votre nom: ")
     while not nom_joueur:
         print("Le nom ne peut pas etre vide.")
         nom_joueur = input("Entrez votre nom: ")
+    return nom_joueur
 
+
+def choix_menu():
+    """Affiche le menu et retourne le choix"""
+
+    print("\n1. Demarrer le jeu")
+    print("2. Afficher le classement")
+    print("3. Quitter")
+    return input("\nVotre choix: ")
+
+
+def demarrer_jeu():
+    """Demarre une nouvelle partie"""
+
+    print("\nNouvelle partie")
+    nom_joueur = demander_nom()
     print(f"\nBienvenue, {nom_joueur}!")
 
     equipe = creer_equipe()
@@ -22,13 +38,11 @@ def demarrer_jeu():
 
 def main():
     """point d'entrée"""
-    init_database()
-    while True:
-        print("\n1. Demarrer le jeu")
-        print("2. Afficher le classement")
-        print("3. Quitter")
 
-        choix = input("\nVotre choix: ")
+    init_database()
+
+    while True:
+        choix = choix_menu()
 
         if choix == "1":
             demarrer_jeu()
